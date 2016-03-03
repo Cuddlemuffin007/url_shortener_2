@@ -14,7 +14,7 @@
         <div class="row">
             <div class="col-md-2"></div>
             <a href="{% url 'external_view' bookmark.shortened %}">
-                <div class="col-md-2">{{ bookmark.title }}</div>
+                <div class="col-md-2">localhost:8000/b/{{ bookmark.shortened }}</div>
             </a>
             <div class="col-md-2">{{ bookmark.description }}</div>
             <div class="col-md-2">{{ bookmark.total_accesses }}</div>

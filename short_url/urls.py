@@ -27,5 +27,5 @@ urlpatterns = [
     url(r'^bookmarks/$', BookmarkListView.as_view(), name='bookmark_list_view'),
     url(r'^bookmark/create/$', BookmarkCreateView.as_view(), name='bookmark_create_view'),
     url(r'^bookmark/update/(?P<pk>\d+)$', BookmarkUpdateView.as_view(), name='bookmark_update_view'),
-    url(r'^(?P<short>\w+)', external_view, name='external_view')
+    url(r'^/b/(?P<short>\w+)', external_view, name='external_view')
 ]
