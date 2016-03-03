@@ -11,7 +11,7 @@
 <body>
     <div class="container">
     {% if request.user.is_authenticated %}
-        <h1 id="welcome">Welcome {{ user.username }}</h1>
+        <h1 class="welcome">Welcome {{ user.username }}</h1>
         <ul class="nav nav-stacked">
             <li role="presentation"><a href="{% url 'home' %}">My Bookmarks</a></li>
             <li role="presentation"><a href="{% url 'bookmark_list_view' %}">View all Bookmarks</a></li>
@@ -19,7 +19,12 @@
             <li role="presentation"><a href="{% url 'logout' %}">Log Out</a></li>
         </ul>
         {% else %}
-            <h1 id="welcome"><a href="{% url 'login' %}">Please Login to Get Started</a></h1>
+        <ul class="nav nav-stacked">
+            <li role="presentation"><a href="{% url 'bookmark_list_view' %}">View all Bookmarks</a></li>
+            <li role="presentation"><a href="{% url 'login' %}">Login</a></li>
+        </ul>
+            <h1 class="welcome">Welcome, {{ user}}</h1>
+            <h4 class="welcome">Please Login to Get Started</h4>
     {% endif %}
 
     {% block content %}
