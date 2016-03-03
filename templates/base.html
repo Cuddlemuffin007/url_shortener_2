@@ -1,0 +1,28 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>URL Shortener</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'main.css' %}">
+</head>
+<body>
+    <div class="container">
+    {% if request.user.is_authenticated %}
+        <h1 id="welcome">Welcome {{ user.username }}</h1>
+        <ul class="nav nav-pills">
+            <li role="presentation"><a href="{% url 'bookmark_list_view' %}">View all Bookmarks</a></li>
+            <li role="presentation"><a href="{% url 'bookmark_create_view' %}">Create a Bookmark</a></li>
+            <li role="presentation"><a href="{% url 'logout' %}">Log Out</a></li>
+        </ul>
+        {% else %}
+            <h1 id="welcome"><a href="{% url 'login' %}">Please Login to Get Started</a></h1>
+    {% endif %}
+
+    {% block content %}
+    {% endblock %}
+    </div>
+</body>
+</html>
