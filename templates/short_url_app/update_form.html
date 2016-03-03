@@ -2,11 +2,13 @@
 
 {% block content %}
     {% if request.user == object.user %}
-        <form action="" method="post">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit">Update Bookmark</button>
-        </form>
+        <div class="form-container">
+            <form action="" method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Update Bookmark</button>
+            </form>
+        </div>
     {% else %}
         <h2>You do not have permission to edit this bookmark.</h2>
         <a href="{% url 'bookmark_list_view' %}"><div>Home</div></a>

@@ -2,9 +2,7 @@ from datetime import datetime
 
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
-from django.shortcuts import render
 from django.views.generic import ListView, CreateView, UpdateView
-from django.contrib.auth.models import User
 
 from short_url_app.models import Bookmark, Click
 from hashids import Hashids
@@ -39,11 +37,16 @@ class BookmarkUpdateView(UpdateView):
     template_name = 'short_url_app/update_form.html'
 
     def get_success_url(self):
-        return reverse('bookmark_list_view')
+        return reverse('home')
 
 
-def home(request):
-    return render(request, 'base.html')
+class HomeView(ListView):
+    model = Bookmark
+    template_name = 'short_url_app/home.html'
+
+    class Meta:
+        ordering = ['-created']
+
 
 def external_view(request, short):
     bookmark = Bookmark.objects.get(shortened=short)

@@ -12,7 +12,8 @@
     <div class="container">
     {% if request.user.is_authenticated %}
         <h1 id="welcome">Welcome {{ user.username }}</h1>
-        <ul class="nav nav-pills">
+        <ul class="nav nav-stacked">
+            <li role="presentation"><a href="{% url 'home' %}">My Bookmarks</a></li>
             <li role="presentation"><a href="{% url 'bookmark_list_view' %}">View all Bookmarks</a></li>
             <li role="presentation"><a href="{% url 'bookmark_create_view' %}">Create a Bookmark</a></li>
             <li role="presentation"><a href="{% url 'logout' %}">Log Out</a></li>

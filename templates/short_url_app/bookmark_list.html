@@ -1,24 +1,26 @@
 {% extends 'base.html' %}
 
 {% block content %}
+    <div class="table">
     <div class="row headers">
         <div class="col-md-2"></div>
         <div class="col-md-2">Link</div>
+        <div class="col-md-2">Description</div>
         <div class="col-md-2">Visited Count</div>
         <div class="col-md-2">Last Accessed</div>
         <div class="col-md-2">Created By</div>
     </div>
     {% for bookmark in object_list %}
         <div class="row">
-            <a href="{% url 'bookmark_update_view' bookmark.pk %}">
-                <div class="col-md-2">edit</div>
-            </a>
+            <div class="col-md-2"></div>
             <a href="{% url 'external_view' bookmark.shortened %}">
                 <div class="col-md-2">{{ bookmark.title }}</div>
             </a>
+            <div class="col-md-2">{{ bookmark.description }}</div>
             <div class="col-md-2">{{ bookmark.total_accesses }}</div>
             <div class="col-md-2">{{ bookmark.last_accessed }}</div>
             <div class="col-md-2">{{ bookmark.user }}</div>
         </div>
     {% endfor %}
+    </div>
 {% endblock %}

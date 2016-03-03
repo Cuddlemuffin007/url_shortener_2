@@ -15,12 +15,13 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from short_url_app.views import BookmarkListView, BookmarkCreateView, BookmarkUpdateView, external_view, home
+from short_url_app.views import BookmarkListView, BookmarkCreateView,\
+    BookmarkUpdateView, external_view, HomeView
 from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', home, name='home'),
+    url(r'^$', HomeView.as_view(), name='home'),
     url(r'^login/$', auth_views.login, name='login'),
     url(r'^logout/$', auth_views.logout, name='logout'),
     url(r'^bookmarks/$', BookmarkListView.as_view(), name='bookmark_list_view'),
